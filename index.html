@@ -1,0 +1,643 @@
+<html>
+
+<head>
+
+<title>Blostma.</title>
+
+<link rel="stylesheet" href="lobby.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+    <a href="#" class="logo">blōstma<span>.</span></a>
+    <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About Us!</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact Us!</a>
+    </nav>
+<div class="icons">
+    <a href="#" class="fas fa-heart" onclick="toggleLikesSummary()"></a>
+    <a href="#" class="fas fa-shopping-cart" onclick="toggleCartSummary()"></a>
+    <a href="#" class="fas fa-user" onclick="toggleUserSummary()"></a>
+</div>
+
+<div id="user-summary" style="display: none;">
+    <form id="user-form" onsubmit="saveUserInfo(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="number">Phone Number:</label>
+        <input type="text" id="number" name="number" required><br><br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br><br>
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+<div id="likes-summary" style="display:none;">
+    <h4>Liked Items</h4>
+    <ul id="liked-items"></ul>
+</div>
+</header>
+
+<div id="cart-summary" style="display:none;">
+    <h4>Order Summary</h4>
+    <ul id="cart-items"></ul>
+    <div>Total: <span id="total-price"></span></div>
+    <button onclick="placeOrder()">Place Order</button>
+</div>
+
+<div id="cart-summary">
+    <h4>Order Summary</h4>
+    <ul id="cart-items"></ul>
+    <div>Total: <span id="total-price">0</span>.00</div>
+    <button onclick="placeOrder()">Place Order</button>
+</div>
+
+<section class="home" id="home">
+
+	<div class="content">
+		<h3>Smell the Best Aroma in town!</h3>
+		<span>The earth laughs in flowers</span>
+		<a href="#" class="btn">Shop now besty!</a>
+	</div>
+
+</section>
+
+
+<section class="about" id="about">
+
+	<h1 class="heading"> <span> About </span> Us! </h1>
+	
+	<div class="row">
+		
+		<div class="video-container">
+			<video src="video/flowervidd.mp4" loop autoplay muted></video>
+			<h3> Best Flower Sellers Besty!</h3>
+		</div>
+		
+		<div class="content">
+			<h3> Why Choose Us Besty!</h3>
+			<p> we believe that flowers are more than just decorations; they are an expression of emotion, an art form, and a way to connect with the natural world.</p>
+			<p> Our flowers are sourced from the finest farms, ensuring that every petal and leaf is lush, vibrant, and bursting with life.</p>
+			<a href="#" class="btn"> Learn more!</a>
+
+
+</section>
+
+<section class="products" id="products">
+    <h1 class="heading"> Latest <span>Products!</span></h1>
+    <div class="box-container">
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Heavenly Grace</h3>
+                <div class="price">P.1000.00 <span>P.2000.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot2.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Whispering Wisteria</h3>
+                <div class="price">P.500.00 <span>P.1000.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot3.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Velvet Moon Viola</h3>
+                <div class="price">P.500.00 <span>P.1000.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot4.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Sapphire Serenity</h3>
+                <div class="price">P.1500.00 <span>P.3000.00</span></div>
+            </div>
+        </div>
+		<div class="box">
+			<span class="discount">-50%</span>
+			<div class="image"> 
+				<img src="pot5.jpg" alt="Flower Pot">
+				<div class="icons">
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="cart-btn">Add to Cart!</a>
+					<a href="#" class="fas fa-share"></a>
+				</div>
+		</div>
+		<div class="content">
+        <h3>Celestial Cherry Blossom</h3>
+        <div class="price">P.5000.00 <span>P.10000.00</span></div>
+		</div>
+		</div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot6.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Twilight Tulip</h3>
+                <div class="price">P.1500.00 <span>P.3000.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot 7.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Silken Snowdrop</h3>
+                <div class="price">P.1250.00 <span>P.2500.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot8.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Ethereal Eglantine</h3>
+                <div class="price">P.1250.00 <span>P.2500.00</span></div>
+            </div>
+        </div>
+
+</section>
+
+<section class="products" id="products">
+    <h1 class="heading"> More <span>Products!</span></h1>
+    <div class="box-container">
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot10.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Aurora Azalea</h3>
+                <div class="price">P.1000.00 <span>P.2000.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot11.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Lunar Lace Lilac</h3>
+                <div class="price">P.500.00 <span>P.1000.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot12.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Mystic Marigold</h3>
+                <div class="price">P.500.00 <span>P.1000.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot13.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Ivory Iris</h3>
+                <div class="price">P.1500.00 <span>P.3000.00</span></div>
+            </div>
+        </div>
+		<div class="box">
+			<span class="discount">-50%</span>
+			<div class="image"> 
+				<img src="pot14.jpg" alt="Flower Pot">
+				<div class="icons">
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="cart-btn">Add to Cart!</a>
+					<a href="#" class="fas fa-share"></a>
+				</div>
+		</div>
+		<div class="content">
+        <h3>Golden Gossamer Gardenia</h3>
+        <div class="price">P.1500.00 <span>P.3000.00</span></div>
+		</div>
+		</div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot15.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Pearl Petunia</h3>
+                <div class="price">P.1500.00 <span>P.3000.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot16.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Heavenly Hyacinth</h3>
+                <div class="price">P.4500.00 <span>P.9000.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot17.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Whimsical Water Lily</h3>
+                <div class="price">P.3000.00 <span>P.6000.00</span></div>
+            </div>
+        </div>
+
+</section>
+
+<section class="products" id="products">
+    <h1 class="heading"> Add some Home to your <span>Flowers!</span></h1>
+    <div class="box-container">
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot18.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Elysian Echo</h3>
+                <div class="price">P.250.00 <span>P.500.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot19.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Serenade Silhouette</h3>
+                <div class="price">P.900.00 <span>P.1800.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot20.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Celestial Cradle</h3>
+                <div class="price">P.400.00 <span>P.800.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot21.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Bloom Beacon</h3>
+                <div class="price">P.250.00 <span>P.500.00</span></div>
+            </div>
+        </div>
+		<div class="box">
+			<span class="discount">-50%</span>
+			<div class="image"> 
+				<img src="pot22.jpg" alt="Flower Pot">
+				<div class="icons">
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="cart-btn">Add to Cart!</a>
+					<a href="#" class="fas fa-share"></a>
+				</div>
+		</div>
+		<div class="content">
+        <h3>Whispering Willow</h3>
+        <div class="price">P.500.00 <span>P.1000.00</span></div>
+		</div>
+		</div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot23.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Luminous Lagoon</h3>
+                <div class="price">P.400.00 <span>P.800.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot24.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Harmony Haven</h3>
+                <div class="price">P.250.00 <span>P.500.00</span></div>
+            </div>
+        </div>
+        <div class="box">
+            <span class="discount">-50%</span>
+            <div class="image">
+                <img src="pot25.jpg" alt="Flower Pot">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">Add to Cart!</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Garden Gala</h3>
+                <div class="price">P.250.00 <span>P.500.00</span></div>
+            </div>
+        </div>
+
+</section>
+
+
+<section class="contact" id="contact">
+    <h1 class="heading"><span>Contact</span> Us!</h1>
+    <div class="row">
+        <form id="contactForm">
+            <input type="text" placeholder="Wats ur Name Besty" class="box" id="nameInput">
+            <input type="email" placeholder="How about ur Email" class="box" id="emailInput">
+            <input type="number" placeholder="Also can i get ur Number" class="box" id="numberInput">
+            <textarea name="" class="box" placeholder="and lastly ur Message" id="messageInput" cols="30" rows="10"></textarea>
+            <input type="submit" value="Send us a Message" class="btn">
+        </form>
+        <div class="image">
+            <img src="flowerbg1.png" alt="">
+        </div>
+    </div>
+</section>
+
+<section class="footer">
+    <div class="box-container">
+        <div class="credit">Created by <span>Yaj Gabriel De Leon BSIT:102</span> All Rights Reserved</div>
+    </div>
+</section>
+
+
+
+
+
+<script>
+
+document.querySelector('.btn').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    window.location.href = '#products'; 
+});
+
+
+document.querySelectorAll('.icons a').forEach(icon => {
+    icon.addEventListener('click', function(event) {
+        event.preventDefault(); 
+    });
+});
+
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    
+    var name = document.getElementById('nameInput').value;
+    var email = document.getElementById('emailInput').value;
+    var number = document.getElementById('numberInput').value;
+    var message = document.getElementById('messageInput').value;
+
+    
+    alert("Thank you " + name + " for your message!");
+
+    
+    document.getElementById('contactForm').reset();
+});
+
+const cart = {};
+const favorites = new Set();
+let userInfo = {
+    name: '',
+    number: '',
+    address: ''
+};
+
+document.querySelectorAll('.cart-btn').forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        const box = button.closest('.box');
+        const productName = box.querySelector('h3').textContent;
+        const productPrice = parseFloat(box.querySelector('.price').textContent.split(' ')[0].replace('P.', ''));
+        if (!cart[productName]) {
+            cart[productName] = { price: productPrice, quantity: 0 };
+        }
+        cart[productName].quantity += 1;
+        updateCartSummary();
+        document.getElementById('cart-summary').style.display = 'block';
+    });
+});
+
+document.querySelectorAll('.fas.fa-heart').forEach(icon => {
+    icon.addEventListener('click', function(event) {
+        event.preventDefault();
+        const box = icon.closest('.box');
+        const productName = box.querySelector('h3').textContent;
+        if (favorites.has(productName)) {
+            favorites.delete(productName);
+            icon.classList.remove('liked');
+        } else {
+            favorites.add(productName);
+            icon.classList.add('liked');
+        }
+        updateLikesSummary();
+        showLikesSummary(); 
+    });
+});
+
+function updateCartSummary() {
+    const cartItems = document.getElementById('cart-items');
+    const totalPriceElement = document.getElementById('total-price');
+    let total = 0;
+    cartItems.innerHTML = '';
+    Object.keys(cart).forEach(product => {
+        const item = document.createElement('li');
+        item.textContent = `${product}: ${cart[product].quantity} x P.${cart[product].price.toFixed(2)}`;
+        total += cart[product].quantity * cart[product].price;
+        cartItems.appendChild(item);
+    });
+    totalPriceElement.textContent = `P.${total.toFixed(2)}`;
+}
+
+function toggleCartSummary() {
+    const cartSummary = document.getElementById('cart-summary');
+    cartSummary.style.display = cartSummary.style.display === 'block' ? 'none' : 'block';
+}
+
+function placeOrder() {
+    if (!userInfo.name || !userInfo.number || !userInfo.address) {
+        alert('Besty hindi ko alam kung saan ka nakatira?');
+        return;
+    }
+    if (Object.keys(cart).length === 0) {
+        alert('Mag order ka muna besty!');
+        return;
+    }
+    alert(`Thank you Besty ${userInfo.name}! Your order is on its way to ${userInfo.address}`);
+    Object.keys(cart).forEach(key => delete cart[key]);
+    updateCartSummary();
+}
+
+function updateLikesSummary() {
+    const likedItems = document.getElementById('liked-items');
+    likedItems.innerHTML = '';
+    favorites.forEach(product => {
+        const item = document.createElement('li');
+        item.textContent = product;
+        likedItems.appendChild(item);
+    });
+}
+
+function showLikesSummary() {
+    const likesSummary = document.getElementById('likes-summary');
+    likesSummary.style.display = 'block';
+}
+
+function toggleLikesSummary() {
+    const likesSummary = document.getElementById('likes-summary');
+    likesSummary.style.display = likesSummary.style.display === 'block' ? 'none' : 'block';
+}
+
+function toggleUserSummary() {
+    const userSummary = document.getElementById('user-summary');
+    userSummary.style.display = userSummary.style.display === 'block' ? 'none' : 'block';
+}
+
+function saveUserInfo(event) {
+    event.preventDefault();
+    userInfo.name = document.getElementById('name').value;
+    userInfo.number = document.getElementById('number').value;
+    userInfo.address = document.getElementById('address').value;
+    alert('User information saved!');
+    toggleUserSummary();  
+}
+
+</script>
+
+
+
+
+</body>
+</html>
