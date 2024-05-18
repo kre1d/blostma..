@@ -499,32 +499,79 @@
 
 <script>
 
-document.querySelector('.btn').addEventListener('click', function(event) {
-    event.preventDefault(); 
-    window.location.href = '#products'; 
-});
+document.addEventListener('DOMContentLoaded', function() {
 
-
-document.querySelectorAll('.icons a').forEach(icon => {
-    icon.addEventListener('click', function(event) {
-        event.preventDefault(); 
+    // sa contact us 
+    document.querySelector('.btn').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = '#products';
     });
-});
 
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); 
+    // sa icons
+    document.querySelectorAll('.icons a').forEach(icon => {
+        icon.addEventListener('click', function(event) {
+            event.preventDefault();
+        });
+    });
 
-    
-    var name = document.getElementById('nameInput').value;
-    var email = document.getElementById('emailInput').value;
-    var number = document.getElementById('numberInput').value;
-    var message = document.getElementById('messageInput').value;
+    // sa contact form
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    
-    alert("Thank you " + name + " for your message!");
+        var name = document.getElementById('nameInput').value;
 
-    
-    document.getElementById('contactForm').reset();
+        alert("Thank you " + name + " for your message!");
+
+        document.getElementById('contactForm').reset();
+    });
+
+    // sa Cart logic
+    document.querySelectorAll('.cart-btn').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const box = button.closest('.box');
+            const productName = box.querySelector('h3').textContent;
+            const productPrice = parseFloat(box.querySelector('.price').textContent.split(' ')[0].replace('P.', ''));
+            if (!cart[productName]) {
+                cart[productName] = { price: productPrice, quantity: 0 };
+            }
+            cart[productName].quantity += 1;
+            updateCartSummary();
+            document.getElementById('cart-summary').style.display = 'block';
+        });
+    });
+
+    // sa Favorites logic
+    document.querySelectorAll('.fas.fa-heart').forEach(icon => {
+        icon.addEventListener('click', function(event) {
+            event.preventDefault();
+            const box = icon.closest('.box');
+            const productName = box.querySelector('h3').textContent;
+            if (favorites.has(productName)) {
+                favorites.delete(productName);
+                icon.classList.remove('liked');
+            } else {
+                favorites.add(productName);
+                icon.classList.add('liked');
+            }
+            updateLikesSummary();
+            showLikesSummary();
+        });
+    });
+
+    // sa Share 
+    document.querySelectorAll('.fas.fa-share').forEach(icon => {
+        icon.addEventListener('click', function(event) {
+            event.preventDefault();
+            const productUrl = window.location.href;
+            navigator.clipboard.writeText(productUrl).then(() => {
+                alert("The Link is Now Copied to Your Clipboard");
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        });
+    });
+
 });
 
 const cart = {};
@@ -534,38 +581,6 @@ let userInfo = {
     number: '',
     address: ''
 };
-
-document.querySelectorAll('.cart-btn').forEach(button => {
-    button.addEventListener('click', function(event) {
-        event.preventDefault();
-        const box = button.closest('.box');
-        const productName = box.querySelector('h3').textContent;
-        const productPrice = parseFloat(box.querySelector('.price').textContent.split(' ')[0].replace('P.', ''));
-        if (!cart[productName]) {
-            cart[productName] = { price: productPrice, quantity: 0 };
-        }
-        cart[productName].quantity += 1;
-        updateCartSummary();
-        document.getElementById('cart-summary').style.display = 'block';
-    });
-});
-
-document.querySelectorAll('.fas.fa-heart').forEach(icon => {
-    icon.addEventListener('click', function(event) {
-        event.preventDefault();
-        const box = icon.closest('.box');
-        const productName = box.querySelector('h3').textContent;
-        if (favorites.has(productName)) {
-            favorites.delete(productName);
-            icon.classList.remove('liked');
-        } else {
-            favorites.add(productName);
-            icon.classList.add('liked');
-        }
-        updateLikesSummary();
-        showLikesSummary(); 
-    });
-});
 
 function updateCartSummary() {
     const cartItems = document.getElementById('cart-items');
@@ -631,7 +646,7 @@ function saveUserInfo(event) {
     userInfo.number = document.getElementById('number').value;
     userInfo.address = document.getElementById('address').value;
     alert('User information saved!');
-    toggleUserSummary();  
+    toggleUserSummary();
 }
 
 </script>
