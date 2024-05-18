@@ -574,6 +574,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+// sa cart tas medj sa user
+
 const cart = {};
 const favorites = new Set();
 let userInfo = {
@@ -615,6 +617,8 @@ function placeOrder() {
     updateCartSummary();
 }
 
+// sa likes
+
 function updateLikesSummary() {
     const likedItems = document.getElementById('liked-items');
     likedItems.innerHTML = '';
@@ -635,6 +639,8 @@ function toggleLikesSummary() {
     likesSummary.style.display = likesSummary.style.display === 'block' ? 'none' : 'block';
 }
 
+// sa user
+
 function toggleUserSummary() {
     const userSummary = document.getElementById('user-summary');
     userSummary.style.display = userSummary.style.display === 'block' ? 'none' : 'block';
@@ -648,7 +654,6 @@ function saveUserInfo(event) {
     alert('User information saved!');
     toggleUserSummary();
 }
-
 
 </script>
 
